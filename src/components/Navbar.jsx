@@ -10,17 +10,16 @@ const Navbar = () => {
   const [nav, setNav] = useState(false)
   const [logo, setLogo] = useState(false)
 
-  const handleNav = () => {
+  const handleNav = (e) => {
+    e.stopPropagation()
     setNav(!nav)
     setLogo(!logo)
   }
 
   return (
-    <div className='flex justify-between items-center h-20 px-4'>
+    <div className='flex justify-between items-center w-full h-20 px-4 absolute z-10 text-white'>
       <div>
-        <h1 onClick={handleNav} className={nav ? 'hidden' : 'block'}>
-          BUCKET_LIST
-        </h1>
+        <h1 className={nav ? 'hidden' : 'block'}>BUCKET_LIST</h1>
       </div>
 
       <ul className='hidden md:flex'>
@@ -36,14 +35,14 @@ const Navbar = () => {
         <BsPerson size={20} />
       </div>
 
-      {/* HamBurger meny */}
+      {/* HamBurger menu */}
 
       <div onClick={handleNav} className='md:hidden z-10'>
         {nav ? <AiOutlineClose className='text-black' size={20} /> : <HiOutlineMenuAlt4 size={20} />}
       </div>
 
       {/* Mobile Menu dropdown */}
-      <div onClick={handleNav} className={nav ? 'absolute left-0 top-0 w-full bg-gray-100/90 px-4 py-7 flex flex-col' : 'absolute left-[-100%]'}>
+      <div className={nav ? 'absolute left-0 top-0 w-full bg-gray-100/90 px-4 py-7 flex flex-col text-black' : 'absolute left-[-100%]'}>
         <ul className=''>
           <h1>BUCKET_LIST</h1>
 
